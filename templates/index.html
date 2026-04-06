@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Secure File Tool</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="card">
+    <h2>🔐 Secure File Tool</h2>
+
+    <form id="form">
+        <input type="file" name="file" required>
+        <input type="password" name="password" placeholder="Enter password" required>
+
+        <button type="button" class="encrypt" onclick="send('encrypt')">Encrypt</button>
+        <button type="button" class="decrypt" onclick="send('decrypt')">Decrypt</button>
+    </form>
+
+    <p id="status"></p>
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

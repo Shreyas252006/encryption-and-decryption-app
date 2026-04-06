@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encryption & Decryption Tool</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            background-color: #0f172a; /* Deep Navy Background */
+        }
+        .custom-dark-bg {
+            background-color: #161e2d; /* Card Background */
+        }
+        .input-bg {
+            background-color: #1e293b; /* Input Field Background */
+        }
+    </style>
+</head>
+<body class="text-slate-200 font-sans min-h-screen flex flex-col items-center">
+
+    <div class="w-full bg-[#1e293b] py-10 text-center border-b border-slate-800">
+        <h1 class="text-4xl font-bold text-white mb-2">Encryption & Decryption Tool</h1>
+        <p class="text-slate-400 text-lg">Secure your messages with AES-256-GCM encryption</p>
+    </div>
+
+    <main class="w-full max-w-4xl mt-12 p-8 custom-dark-bg rounded-lg shadow-2xl">
+        
+        <div class="flex bg-[#0f172a] rounded-full p-1 mb-8 border border-slate-700">
+            <button class="flex-1 flex items-center justify-center gap-2 bg-[#10b981] text-white py-2 rounded-full font-semibold transition">
+                <i data-lucide="lock" class="w-4 h-4"></i> Encrypt
+            </button>
+            <button class="flex-1 flex items-center justify-center gap-2 text-slate-500 py-2 rounded-full font-semibold hover:text-slate-300 transition">
+                <i data-lucide="unlock" class="w-4 h-4"></i> Decrypt
+            </button>
+        </div>
+
+        <div class="flex gap-2 mb-6">
+            <button class="flex items-center gap-2 bg-white text-slate-900 px-4 py-2 rounded-md font-medium">
+                <i data-lucide="file-text" class="w-4 h-4"></i> Text
+            </button>
+            <button class="flex items-center gap-2 bg-[#10b981] text-white px-4 py-2 rounded-md font-medium">
+                <i data-lucide="upload" class="w-4 h-4"></i> File
+            </button>
+        </div>
+
+        <div class="mb-6">
+            <label class="block text-sm font-semibold mb-2">Image to Encrypt</label>
+            <div class="flex items-center gap-4 input-bg border border-slate-700 rounded-md p-2">
+                <label class="bg-[#10b981] hover:bg-[#059669] text-white px-4 py-1.5 rounded cursor-pointer font-bold text-sm transition">
+                    Choose File
+                    <input type="file" class="hidden">
+                </label>
+                <span class="text-slate-400 text-sm">No file chosen</span>
+            </div>
+        </div>
+
+        <div class="mb-8">
+            <label class="block text-sm font-semibold mb-2">Password</label>
+            <div class="relative">
+                <input type="password" placeholder="Enter a strong password..." 
+                       class="w-full input-bg border border-slate-700 rounded-md p-3 text-white placeholder-slate-500 focus:ring-2 focus:ring-[#10b981] focus:outline-none">
+                <button class="absolute right-3 top-3.5 text-slate-500 hover:text-slate-300">
+                    <i data-lucide="eye" class="w-5 h-5"></i>
+                </button>
+            </div>
+        </div>
+
+        <button class="w-full bg-[#10b981] hover:bg-[#059669] text-white font-bold py-3 rounded-md flex items-center justify-center gap-2 transition-all mb-10">
+            <i data-lucide="lock" class="w-5 h-5"></i> Encrypt File
+        </button>
+
+        <div class="bg-[#0f172a] border-l-4 border-slate-600 p-6 rounded-r-md">
+            <p class="text-sm leading-relaxed text-slate-400">
+                <span class="font-bold text-slate-200">Security Note:</span> 
+                This tool uses AES-256-GCM encryption with PBKDF2 key derivation. Your data is encrypted locally in your browser and never sent to any server. Make sure to use a strong password for best security.
+            </p>
+        </div>
+
+    </main>
+
+    <script>
+        // Initialize Icons
+        lucide.createIcons();
+    </script>
+</body>
+</html>

@@ -43,7 +43,6 @@ def encrypt():
 @app.route("/decrypt", methods=["POST"])
 def decrypt():
     try:
-        # 🔹 Get file + password
         file = request.files.get("file")
         password = request.form.get("password")
 
@@ -53,23 +52,18 @@ def decrypt():
         if not password:
             return "Password required", 400
 
-        # 🔹 Save uploaded file
-        os.makedirs(UPLOAD_FOLDER, exist_ok=True)
         path = os.path.join(UPLOAD_FOLDER, file.filename)
         file.save(path)
 
         print("Saved file:", path)
 
-        # 🔹 Decrypt
         output = decrypt_file(path, password)
 
         print("Decrypted output:", output)
 
-        # 🔹 Validate output
         if not output or not os.path.exists(output):
             return "Decryption failed (file not created)", 500
 
-        # 🔹 Send file with correct name
         return send_file(
             output,
             as_attachment=True,
